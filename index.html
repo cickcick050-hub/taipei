@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taipei Trip - 台北観光ナビ</title>
+    <!-- Seo Tags -->
+    <meta name="description" content="台北市内の高評価飲食店、ミシュラン、観光スポット、夜市を検索し、移動経路や便利な中国語フレーズを調べることができるWebサービス。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <h1 class="logo">TaipeiTrip 🇹🇼</h1>
+            <p class="subtitle">あなただけの台北体験を見つけよう</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Categories -->
+        <section class="category-filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="ri-function-line"></i> すべて
+            </button>
+            <button class="filter-btn" data-filter="highRated">
+                <i class="ri-star-smile-fill"></i> 高評価店
+            </button>
+            <button class="filter-btn" data-filter="michelin">
+                <i class="ri-restaurant-2-fill"></i> ミシュラン
+            </button>
+            <button class="filter-btn" data-filter="tourist">
+                <i class="ri-camera-lens-fill"></i> 観光スポット
+            </button>
+            <button class="filter-btn" data-filter="nightmarket">
+                <i class="ri-moon-cloudy-line"></i> 夜市
+            </button>
+        </section>
+
+        <!-- Map Container -->
+        <section class="map-section">
+            <div id="map" class="map-container">
+                <div class="map-loading">マップを読み込んでいます...</div>
+            </div>
+
+        </section>
+
+        <!-- List View -->
+        <section class="list-section">
+            <h2 class="section-title"><i class="ri-map-pin-line"></i> お勧めスポット</h2>
+            <div class="spot-list" id="spot-list">
+                <!-- Data injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="detail-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close"><i class="ri-close-line"></i></button>
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title">スポット名</h3>
+                <span id="modal-category" class="category-badge">カテゴリ</span>
+            </div>
+            
+            <div class="modal-body">
+                <!-- 運転手見せ用 中文カード -->
+                <div class="driver-card">
+                    <p class="driver-hint">🚕 タクシー運転手に見せてください</p>
+                    <h4 id="modal-title-zh" class="driver-zh">中文名稱</h4>
+                    <p id="modal-address" class="driver-address">地址</p>
+                </div>
+
+                <div class="info-block">
+                    <h4><i class="ri-information-line"></i> 見どころ・名物</h4>
+                    <p id="modal-description" class="spot-desc">説明文</p>
+                    <p id="modal-specialty" class="spot-specialty"><i class="ri-price-tag-3-line"></i> 特徴・カテゴリ: <span></span></p>
+                    <div id="modal-nightmarket-map" class="nightmarket-map-container" style="display:none;">
+                        <h4 style="color:#FFB703; font-size:0.9rem;"><i class="ri-map-pin-user-fill"></i> マップに露店・周辺店舗を簡易表示しました</h4>
+                    </div>
+                </div>
+
+                <div class="info-block phrases-block">
+                    <h4><i class="ri-chat-smile-3-line"></i> 使える中国語フレーズ</h4>
+                    <ul id="modal-phrases" class="phrase-list">
+                        <!-- phrases injected by JS -->
+                    </ul>
+                </div>
+                
+                <div class="transit-block">
+                    <h4><i class="ri-route-line"></i> ここへの行き方を調べる</h4>
+                    <div class="transit-buttons">
+                        <button class="transit-btn train" data-mode="transit">
+                            <i class="ri-train-wifi-line"></i> 電車・バス
+                        </button>
+                        <button class="transit-btn walk" data-mode="walking">
+                            <i class="ri-walk-line"></i> 徒歩
+                        </button>
+                        <button class="transit-btn taxi" data-mode="driving">
+                            <i class="ri-taxi-line"></i> タクシー
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+
+    <!-- Google Maps API API_KEY_HERE placeholder -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWvciYWyk7pq90ptAxb-r4fyeCYtUU454&libraries=places&callback=initMap"></script>
+</body>
+</html>
